@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Transactions Tracker</title>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <section class="summary">
+                <h1 class="title">Current Balance</h1>
+                <span class="balance" id="balance">$0.00</span>
+            </section>
+            <section class="form-container">
+                <form class="form" id="form">
+                    <div class="inputs">
+                        <input type="radio" name="type" id="deposit" value="deposit">
+                        <label for="deposit">Deposit</label>
+                        <input type="radio" name="type" id="withdrawal" value="withdrawal">
+                        <label for="withdrawal">Withdrawal</label>
+                    </div>
+                    <div class="inputs">
+                        <label for="amount">Amount</label>
+                        <input type="number" name="amount" id="amount" required min="0.01" step="0.01" placeholder="Enter amount">
+                    </div>
+                    <button type="submit">Complete operation</button>
+                </form>
+            </section>
+            <section class="transaction-history">
+                <div class="filters">
+                    <select name="filter" id="filters">
+                        <option value="" disabled selected>Filter</option>
+                        <option value="all">All</option>
+                        <option value="deposit">Deposit</option>
+                        <option value="withdrawal">Withdrawal</option>
+                    </select>
+                </div>
+                <ul class="history" id="history">
+                    <li class="transaction transaction--deposit">
+                        <div class="transaction__content">
+                            <span>Lorem, ipsum.</span>
+                            <span>$0.00</span>
+                        </div>
+                    </li>
+                    <li class="transaction transaction--withdrawal">
+                        <div class="transaction__content">
+                            <span>Lorem, ipsum.</span>
+                            <span>$0.00</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
