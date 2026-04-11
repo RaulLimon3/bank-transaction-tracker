@@ -102,6 +102,13 @@ ol {
     transition: background 0.3s ease, transform 0.1s ease;
 }
 
+.radio label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
 .radio:hover {
     background: #a6c5d8;
 }
@@ -117,11 +124,11 @@ input[type="radio"] {
     height: 0;
 }
 
-.deposit {
+.radio:has(input[value="deposit"]:checked) {
     background: #249b90;
 }
 
-.withdrawal {
+.radio:has(input[value="withdrawal"]:checked) {
     background: #ff8080;
 }
 
