@@ -23,6 +23,63 @@ const validateInputs = () => {
     };
 }
 
+// Limpiar campos
+const cleanInputs = () => {
+    const form = document.getElementById('form');
+    form.reset();
+    document.querySelectorAll('.input').forEach(input => {
+        input.classList.remove('input--danger');
+    });
+}
+
+// Mostramos los resultados en pantalla
+const renderTransaction = (transactions) => {
+    // Accedemos a nuestros elementos
+    const history = document.getElementById('history');
+
+    // Limpiamos pantalla 
+    history.innerHTML = '';
+
+    // Verificamos si no hay algun registro
+    if (transactions.length === 0) {
+        // Agregamos nuestra clase al contenedor
+        history.classList.add('history--none');
+        // Creamos nuestro elemenot padre
+        const li = document.createElement('li');
+        // Creamos nuestro elemento hijo
+        const message = document.createElement('span')
+        // Agregamos el contenido
+        message.textContent = 'No transactions yet. Add one!';
+
+        // Mostramos el contenido
+        li.appendChild(message);
+        history.appendChild(li);
+        return;
+    }
+
+    // Si existe un registro, quitamos el mensaje
+    history.classList.remove('history--none');
+
+    // Recorremos nuestras transacciones
+    transactions.forEach(transaction => {
+        // Creamos nuestros contenedor
+        const li = document.createElement('li');
+        // Establecemos que sea un depostio la transacction
+        const isDeposit = transaction.type === 'deposit';
+        li.classList.add('transaction', isDeposit ? 'transaction--deposit' : 'transaction--withdrawal');
+        // Creamos nuestro contenido
+        const div = document.createElement('div');
+        div.classList.add('transaction__content');
+        div.innerHTML = `
+            <span>${transaction.type}</span>
+            <span>$${transaction.amount}</span>
+        `;
+        // Mostramos nuestro contenido
+        li.appendChild(div);
+        history.appendChild(li);
+    });
+};
+
 // El campo pierde el foco
 let touched = false;
 // Accedemos a nuestro elemento
@@ -40,4 +97,4 @@ amount.addEventListener('blur', () => {
 });
 
 // Exportamos nuestra funcion
-export { validateInputs };
+export { validateInputs, renderTransaction, cleanInputs };

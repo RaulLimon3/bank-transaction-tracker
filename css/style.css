@@ -198,6 +198,11 @@ button:active {
     scroll-behavior: smooth;
 }
 
+.history--none {
+    justify-content: center;
+    align-items: center;
+}
+
 .transaction {
     background: #a6c5d8;
     font-size: 1.125rem;

@@ -13,15 +13,8 @@ const addTransaction = () => {
         amount: data.amount
     });
 
-    // Limpiamos campo
-    const form = document.getElementById('form');
-    form.reset();
-    document.querySelectorAll('.input').forEach(input => {
-        input.classList.remove('input--danger');
-    });
-
     // Mostramos los datos
-    console.log(transactions);
+    return transactions;
 }
 
 export { addTransaction };
