@@ -83,7 +83,15 @@ const renderTransaction = (transactions) => {
 // Agregamos formato 
 const formatAmount = (amount) => {
     return amount.toFixed(2);
-}
+};
+
+// Mostramos nuestro balance total
+const renderBalance = (balance) => {
+    // Accedemos a nuestro elemento
+    const balanceRender = document.getElementById('balance');
+    // Cambiamos el valor
+    balanceRender.textContent = `$${formatAmount(balance)}`;
+};
 
 
 // El campo pierde el foco
@@ -103,4 +111,4 @@ amount.addEventListener('blur', () => {
 });
 
 // Exportamos nuestra funcion
-export { validateInputs, renderTransaction, cleanInputs };
+export { validateInputs, renderTransaction, cleanInputs, renderBalance };

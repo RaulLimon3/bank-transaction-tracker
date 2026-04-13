@@ -17,4 +17,19 @@ const addTransaction = () => {
     return transactions;
 }
 
-export { addTransaction };
+// Calculamos nuestro balance
+const calculateBalance = (transactions) => {
+    // Guardamos la suma de los depositos y retiros de la cuenta
+    const result = transactions.reduce((total, transaction) => {
+        if (transaction.type === 'deposit') {
+            total.deposit += transaction.amount;
+        } else {
+            total.withdrawal += transaction.amount;
+        }
+        return total;
+    }, {deposit: 0, withdrawal: 0});
+    
+    return result.deposit - result.withdrawal;
+}
+
+export { addTransaction, calculateBalance };

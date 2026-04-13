@@ -1,13 +1,14 @@
 // Importamos nuestros archivos
-import { addTransaction } from "./logic.js";
+import { addTransaction, calculateBalance } from "./logic.js";
 import { transactions } from "./state.js";
-import { cleanInputs, renderTransaction } from "./ui.js";
+import { cleanInputs, renderBalance, renderTransaction } from "./ui.js";
 
 // Accedemos a nuesto formulario
 const form = document.getElementById('form');
 
 // Mostramos nuestras transacciones
 renderTransaction(transactions);
+renderBalance(calculateBalance(transactions));
 
 // Esperamos que el usuario envie el formulario
 form.addEventListener('submit', (e) => {
@@ -16,8 +17,11 @@ form.addEventListener('submit', (e) => {
     // Agrega la operación y actualizamos las transacciones
     const updateTransaction = addTransaction();
     if (!updateTransaction) return;
+    // Mostramos el balance
+    const balance = calculateBalance(updateTransaction);
     // Mostramos las nuevas transacciones
     renderTransaction(updateTransaction);
+    renderBalance(balance);
     // Limpiamos los campos
     cleanInputs();
 });
