@@ -102,6 +102,11 @@ ol {
     transition: background 0.3s ease, transform 0.1s ease;
 }
 
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .radio label {
     display: block;
     width: 100%;

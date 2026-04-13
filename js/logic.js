@@ -7,6 +7,13 @@ const addTransaction = () => {
     const data = validateInputs();
     // Validamos el campo
     if (!data) return;
+    // Validamos si tiene saldo
+    const result = calculateBalance(transactions);
+    const balance = result.balance;
+    if(!canMakeTransaction(data.type, data.amount, balance)) {
+        alert('No tienes saldo suficiente');
+        return;
+    }
     // Agregamos los datos
     transactions.unshift({
         type: data.type,
@@ -15,7 +22,7 @@ const addTransaction = () => {
 
     // Mostramos los datos
     return transactions;
-}
+};
 
 // Calculamos nuestro balance
 const calculateBalance = (transactions) => {
@@ -29,7 +36,21 @@ const calculateBalance = (transactions) => {
         return total;
     }, {deposit: 0, withdrawal: 0});
     
-    return result.deposit - result.withdrawal;
+    return {
+        balance: result.deposit - result.withdrawal,
+        deposit: result.deposit,
+        withdrawal: result.withdrawal
+    };
+};
+
+const canMakeTransaction = (type, amount, balance) => {
+    if (type === 'withdrawal' && balance <= 0) {
+        return false;
+    }
+    if (type === 'withdrawal' && amount > balance) {
+        return false;
+    }
+    return true;
 }
 
 export { addTransaction, calculateBalance };

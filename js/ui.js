@@ -82,7 +82,7 @@ const renderTransaction = (transactions) => {
 
 // Agregamos formato 
 const formatAmount = (amount) => {
-    return amount.toFixed(2);
+    return Number(amount).toFixed(2);
 };
 
 // Mostramos nuestro balance total
@@ -93,6 +93,21 @@ const renderBalance = (balance) => {
     balanceRender.textContent = `$${formatAmount(balance)}`;
 };
 
+// Deshabilitamos nuestro boton
+const toggleWithdrawalOption = (balance) => {
+    // Seleccionamos nuestro elemento
+    const withdrawalInput = document.querySelector('input[value="withdrawal"]');
+    const withdrawalBtn = withdrawalInput.closest('.radio');
+    // Verificamos si nuestro balance no es menor o igual que 0
+    if (balance <= 0) {
+        withdrawalInput.disabled = true;
+        withdrawalInput.checked = false;
+        withdrawalBtn.classList.add('disabled');
+    } else {
+        withdrawalInput.disabled = false;
+        withdrawalBtn.classList.remove('disabled');
+    }
+}
 
 // El campo pierde el foco
 let touched = false;
@@ -111,4 +126,4 @@ amount.addEventListener('blur', () => {
 });
 
 // Exportamos nuestra funcion
-export { validateInputs, renderTransaction, cleanInputs, renderBalance };
+export { validateInputs, renderTransaction, cleanInputs, renderBalance, toggleWithdrawalOption };
