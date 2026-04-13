@@ -72,13 +72,19 @@ const renderTransaction = (transactions) => {
         div.classList.add('transaction__content');
         div.innerHTML = `
             <span>${transaction.type}</span>
-            <span>$${transaction.amount}</span>
+            <span>${isDeposit ? '+' : '-'}$${formatAmount(transaction.amount)}</span>
         `;
         // Mostramos nuestro contenido
         li.appendChild(div);
         history.appendChild(li);
     });
 };
+
+// Agregamos formato 
+const formatAmount = (amount) => {
+    return amount.toFixed(2);
+}
+
 
 // El campo pierde el foco
 let touched = false;
