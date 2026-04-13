@@ -53,4 +53,11 @@ const canMakeTransaction = (type, amount, balance) => {
     return true;
 }
 
-export { addTransaction, calculateBalance };
+const filterTransaction = (transactions, type) => {
+    // Mostramos todos los movimientos
+    if (type === 'all') return transactions;
+    // Filtramos por movimiento
+    return transactions.filter(transaction => transaction.type === type);
+}
+
+export { addTransaction, calculateBalance, filterTransaction };
