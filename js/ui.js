@@ -66,7 +66,7 @@ const renderTransaction = (transactions) => {
         const li = document.createElement('li');
         // Establecemos que sea un depostio la transacction
         const isDeposit = transaction.type === 'deposit';
-        li.classList.add('transaction', isDeposit ? 'transaction--deposit' : 'transaction--withdrawal');
+        li.classList.add('transaction', isDeposit ? 'transaction--deposit' : 'transaction--withdrawal', 'new');
         // Creamos nuestro contenido
         const div = document.createElement('div');
         div.classList.add('transaction__content');
