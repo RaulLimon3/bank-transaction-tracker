@@ -7,7 +7,7 @@ A modern web application to manage income and expenses, track balance changes, a
 ## 🚀 Live Demo
 
 🔗 You can try the application here:
-👉
+👉 https://raullimon3.github.io/bank-transaction-tracker/
 
 ---
 
