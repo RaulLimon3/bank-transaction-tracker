@@ -146,6 +146,7 @@ label {
     background: #a6c5d8;
     width: 100%;
     text-align: center;
+    text-align-last: center;
     font-size: 1.5rem;
     padding: 3px;
     border: none;
